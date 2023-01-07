@@ -1,0 +1,105 @@
+# set working directory
+
+# check working directory
+dir()
+
+# Check if packages exist, install them if not
+
+# Prerequisite packages:
+if (!requireNamespace("openxlsx", quietly = TRUE)) install.packages("openxlsx")
+
+# call/load packages:
+if (!requireNamespace("openxlsx", quietly = TRUE)) install.packages("openxlsx")
+library("openxlsx")
+
+
+# loading data
+# We now load data from the .xlsx file contained in the same folder.
+IEGlists=read.xlsx("Cleaned Data IEG Human 1.xlsx")
+view(IEGlists)
+
+# display the first n rows present in the input data frame
+head(IEGlists)
+
+# convert a list to a vector
+unlist(head(IEGlists))
+
+# create frequency tables as output
+table(unlist(head(IEGlists)))
+
+# display the last n rows of the dataset
+tail(IEGlists)
+
+# check length
+length(IEGlists[, 1])
+
+# eliminate or delete the duplicate values or the rows present,
+# in the vector, data frame, or matrix as well
+unique(IEGlists[, 1])
+
+
+
+# omit all unnecessary cases from data frame, matrix or vector
+na.omit(IEGlists[, 1])
+na.omit(IEGlists)
+
+unique(IEGlists[, 1])
+na.omit(IEGlists[, 1])
+unique(IEGlists[, 1])
+
+
+
+#pick out the list
+IEGlists.human=IEGlists[, 1:12]
+IEGlists.human1= as.vector(na.omit(unique(IEGlists[, 1])))
+unique(IEGlists.human1)
+unique(IEGlists.human2)
+
+IEGlists.human1= as.vector(na.omit(unique(IEGlists[, 1])))
+IEGlists.human2= as.vector(na.omit(unique(IEGlists[, 2])))
+IEGlists.human3= as.vector(na.omit(unique(IEGlists[, 3])))
+IEGlists.human4= as.vector(na.omit(unique(IEGlists[, 4])))
+IEGlists.human5= as.vector(na.omit(unique(IEGlists[, 5])))
+IEGlists.human6= as.vector(na.omit(unique(IEGlists[, 6])))
+IEGlists.human7= as.vector(na.omit(unique(IEGlists[, 7])))
+IEGlists.human8= as.vector(na.omit(unique(IEGlists[, 8])))
+IEGlists.human9= as.vector(na.omit(unique(IEGlists[, 9])))
+IEGlists.human10= as.vector(na.omit(unique(IEGlists[, 10])))
+IEGlists.human11= as.vector(na.omit(unique(IEGlists[, 11])))
+IEGlists.human12= as.vector(na.omit(unique(IEGlists[, 12])))
+
+# check any duplicated or unnecessary data
+unique(IEGlists.human1)
+unique(IEGlists.human2)
+unique(IEGlists.human3)
+unique(IEGlists.human4)
+unique(IEGlists.human5)
+unique(IEGlists.human6)
+unique(IEGlists.human7)
+unique(IEGlists.human8)
+unique(IEGlists.human9)
+unique(IEGlists.human10)
+unique(IEGlists.human11)
+unique(IEGlists.human12)
+
+
+# combines multiple values into a vector or list
+IEGlists.human.all=c(IEGlists.human1, IEGlists.human2, IEGlists.human3, IEGlists.human4, 
+                     IEGlists.human5, IEGlists.human6, IEGlists.human7, IEGlists.human8,
+                     IEGlists.human9, IEGlists.human10, IEGlists.human11, IEGlists.human12)
+
+
+
+#summary: create frequency table
+IEGlists.human.all.table=table(IEGlists.human.all)
+
+
+#sort 
+IEGlists.human.all.table.sort=sort(IEGlists.human.all.table, decreasing = T)
+
+
+# display the first n rows present in the input data frame
+head(IEGlists.human.all.table.sort)
+
+# write a data frame to an Excel workbook
+write.xlsx(IEGlists.human.all.table.sort, file = "IEG_human_stats_sys_trial.xlsx")
